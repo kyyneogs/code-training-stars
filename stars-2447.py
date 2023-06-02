@@ -1,19 +1,16 @@
-k=27
+# baekjoon 2447
+# 이번 문제는 잘 모르겠습니다. 많이 배워야 할 것 같네요.
 
-tree = 0
+N = int(input())
 
-# 가운데의 빈 공간 (n/3) * (n/3)을 크기 n/3의 패턴으로 감싸는 형태.
-# 규칙이 layer123 456 789 
 
-def square(x, length, pattern):
+def pattern(x, flag):
+    if x==1:
+        if flag==True: print(" ", end='')
+        else: print("*", end='')
+    else:
+        for i in range(9):
+            if i==4: pattern(x//3, flag or True)
+            else: pattern(x//3, flag or False)
 
-    blank = []
-    result = []
-    for i in range(x//3 * x//3):
-        blank.append('False')
-
-    for i in range(9):
-        if i==4: result.extend(blank)
-        else: result.append()
-
-square(k)
+pattern(3**N, False)
