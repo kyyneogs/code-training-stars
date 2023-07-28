@@ -3,18 +3,16 @@
 N = int(input())
 
 arr = [['***' for _ in range(N//3)] for _ in range(N)]
-print(arr)
-
 
 def pattern(row, col, num, flag=True):
-    if num == 3:
+    if num < 3:
         if flag==True:
             arr[row+1][col] = '* *'
         else:
             arr[row][col], arr[row+1][col], arr[row+2][col] = '   ', '   ', '   '
     
     else:
-        if (row//(num//3)) % 3 == 1 and (col//(num//9)) % 3 == 1: flag_T = False
+        if ((row//3)//(num//3)) % 3 == 1 and (col//(num//3)) % 3 == 1: flag_T = False
         else: flag_T= True
         pattern(row, col, num//3, flag * flag_T)
 
