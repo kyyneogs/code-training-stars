@@ -33,11 +33,7 @@ def make_pattern(N):
 
     return new_pattern
 
-    
-
 pattern = make_pattern(N)
-
-# basic[1][1] = basic[0][0]
 
 for i in pattern:
     print(''.join(i))
