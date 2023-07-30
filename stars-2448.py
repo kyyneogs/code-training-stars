@@ -4,17 +4,68 @@
 
 N = int(input())
 
-def draw(K):
-    floor = K%3
-    if floor == 0:
-        print('*', end='')
-    elif floor==1:
-        print('* *', end='')
-    else:
-        print('*****', end='')
+# 가장 기초가 되는 패턴 형성
+basic = [[' ',' ','*',' ',' '],
+         [' ','*',' ','*',' '],
+         ['*','*','*','*','*']]
 
-for i in range(N):
-    for j in range(0, N-i-1):
-        print(' ', end='')
-    draw(i)
-    print('')
+def make_pattern(N):
+    if N != 3:
+        width = N * 2 - 1
+        height = N
+
+        new_pattern = [[' ' for _ in range(width)] for _ in range(height)] # test
+        old_pattern = make_pattern(N//2)
+
+        old_width = (width - 1) // 2
+        old_height = height // 2
+
+        for i in range(old_height):
+            for j, k in enumerate(range(old_height, old_height + old_width)):
+                new_pattern[i][k] = old_pattern[i][j]
+        
+        for i, j in enumerate(range(old_height, height)):
+            for k, l in enumerate(range(old_width)):
+                new_pattern[j][l], new_pattern[j][l + old_width + 1] = old_pattern[i][k], old_pattern[i][k]
+
+    else:
+        return basic
+
+    return new_pattern
+
+    
+
+pattern = make_pattern(N)
+
+# basic[1][1] = basic[0][0]
+
+for i in pattern:
+    print(''.join(i))
+
+# 너비 = N * 2 - 1
+# 높이 = N
+# 다음 패턴에서는 N * (N * 2 - 1)의 직사각형에서 기존에 있던 패턴이 (N/2) 만큼 떨어진 뒤 나타나버림.
+#                        *                        
+#                       * *                       
+#                      *****                      
+#                     *     *                     
+#                    * *   * *                    
+#                   ***** *****                   
+#                  *           *                  
+#                 * *         * *                 
+#                *****       *****                
+#               *     *     *     *               
+#              * *   * *   * *   * *              
+#             ***** ***** ***** *****             
+#            *                       *            
+#           * *                     * *           
+#          *****                   *****          
+#         *     *                 *     *         
+#        * *   * *               * *   * *        
+#       ***** *****             ***** *****       
+#      *           *           *           *      
+#     * *         * *         * *         * *     
+#    *****       *****       *****       *****    
+#   *     *     *     *     *     *     *     *   
+#  * *   * *   * *   * *   * *   * *   * *   * *  
+# ***** ***** ***** ***** ***** ***** ***** *****
