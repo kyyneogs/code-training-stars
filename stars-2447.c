@@ -9,7 +9,7 @@ int main(void){
     scanf("%d", &num);
 
     for(int i=0; i<num; i++){
-        for(int j=0; j<num; j++){
+        for(int j=0; j<num+5; j++){
             printf("hello world!\n");
         }
     }
