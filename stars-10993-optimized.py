@@ -7,7 +7,7 @@ def s(n):
     L=len(T)
     A=[]
     
-    A.append(' '*(2*L)+'*'+' '*(2*L))
+    A.append(' '*(2*L)+'*'+' '*(2*L)) 
     for i in range(1,L):A.append(' '*(2*L-i)+'*'+' '*(2*i-1)+'*'+' '*(2*L-i))
     for i in range(L):A.append(' '*(L-i)+'*'+' '*i+T[i]+' '*i+'*'+' '*(L-i))
     A.append('*'*(4*L+1))
