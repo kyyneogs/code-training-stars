@@ -20,10 +20,7 @@ for i in range(0,N,3):
     for j in range(0,N//3): 
         pattern(i, j, N)
 
-for i in range(0,N):
-    for j in range(0,N//3):
-        print(arr[i][j], end='')
-    print('')
+for i in range(0,N): print(*arr[i])
 
 # input = 9
 # *** *** ***
